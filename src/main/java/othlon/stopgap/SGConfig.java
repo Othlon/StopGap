@@ -25,6 +25,9 @@ public class SGConfig {
     public static void configurating(File confile)
     {
         Configuration config = new Configuration(confile);
+
+        if(config.hasChanged())config.save();
+
         config.load();
 
         canMakeOwnRedstone  = config.get("Do you want to be able to make"," your own redstone?",true,"").getBoolean(true);
