@@ -27,10 +27,10 @@ public class SGConfig {
         Configuration config = new Configuration(confile);
         config.load();
 
-        canMakeOwnRedstone  = config.get("","",true,"").getBoolean();
-        canMakeOwnGlowstone = config.get("","",true,"").getBoolean();
-        canCraftClayBlock   = config.get("","",true,"").getBoolean();
-        canCraftClayBalls   = config.get("","",true,"").getBoolean();
+        canMakeOwnRedstone  = config.get("Do you want to be able to make"," your own redstone?",true,"").getBoolean();
+        canMakeOwnGlowstone = config.get("Do you want to be able to make"," your own glowstone?",true,"").getBoolean();
+        canCraftClayBlock   = config.get("Do you want to be able to make"," blocks of clay?",true,"").getBoolean();
+        canCraftClayBalls   = config.get("Do you want to be able to make"," balls of clay from crafting a block of clay?",true,"").getBoolean();
     }
 
 }
