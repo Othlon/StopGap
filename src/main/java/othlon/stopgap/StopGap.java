@@ -3,6 +3,7 @@ package othlon.stopgap;
 /**
  * Created by Jen on 18/05/14.
  */
+import com.sun.deploy.config.Config;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
@@ -33,6 +34,8 @@ public class StopGap {
     @Mod.EventHandler
     public static void preInit( FMLPreInitializationEvent event)
     {
+        Config.create(event.getSuggestedConfigurationFile());
+
         othlon.stopgap.items.SGItems.init();
         othlon.stopgap.items.SGItems.recipebook();
 
