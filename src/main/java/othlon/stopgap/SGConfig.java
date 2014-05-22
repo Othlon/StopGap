@@ -22,9 +22,15 @@ public class SGConfig {
     public static boolean canCraftClayBalls;
 
 
-    public initConf(Configuration config)
+    public static void void configurating(File confile)
     {
-        Configuration.get();
+        Configuration config = new Configuration(confile);
+        config.load();
+
+        canMakeOwnRedstone  = config.get("","",true,"").getBoolean();
+        canMakeOwnGlowstone = config.get("","",true,"").getBoolean();
+        canCraftClayBlock   = config.get("","",true,"").getBoolean();
+        canCraftClayBalls   = config.get("","",true,"").getBoolean();
     }
 
 }
