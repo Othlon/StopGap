@@ -5,17 +5,15 @@ package othlon.stopgap.items;
  */
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraft.item.Item;
-import othlon.stopgap.StopGap;
 
+import othlon.stopgap.SGConfig;
 
 public class SGItems {
-
 
 public static Item ingotRed;
 public static Item mixRed;
@@ -26,139 +24,141 @@ public static Item mixGlow;
     public static void init()
     {
 
-        /* redstone stuff */
-        ingotRed = new SGIngot()
+
+/* REDSTONE */
+         ingotRed = new SGIngot()
                 .setUnlocalizedName("Red Ingot")
                 .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
                 .setTextureName("stopgap:red_ingot");
 
-        GameRegistry.registerItem(ingotRed, "stopgap:ingotRed");
+         GameRegistry.registerItem(ingotRed, "stopgap:ingotRed");
 
-        mixRed   = new SGMixture()
+         mixRed   = new SGMixture()
                 .setUnlocalizedName("Red Mixture")
                 .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
                 .setTextureName("stopgap:red_mix");
-        GameRegistry.registerItem(mixRed, "mixRed");
+         GameRegistry.registerItem(mixRed, "mixRed");
 
+         OreDictionary.registerOre("ingotRedstone", ingotRed);
 
-        /* Glowstone stuff*/
-        ingotGlow = new SGIngot()
+/* GLOWSTONE */
+            ingotGlow = new SGIngot()
                  .setUnlocalizedName("Glow Ingot")
-                .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                 .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
                  .setTextureName("stopgap:glow_ingot");
-        GameRegistry.registerItem(ingotGlow, "ingotGlow");
+            GameRegistry.registerItem(ingotGlow, "ingotGlow");
 
-        mixGlow   = new SGMixture()
+            mixGlow   = new SGMixture()
                 .setUnlocalizedName("Glow Mixture")
                 .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
                 .setTextureName("stopgap:glow_mix");
-        GameRegistry.registerItem(mixGlow, "mixGlow");
+            GameRegistry.registerItem(mixGlow, "mixGlow");
 
-        /* ore dictionary */
-        OreDictionary.registerOre("ingotRedstone", ingotRed);
+            OreDictionary.registerOre("ingotGlowstone", ingotGlow);
 
-        OreDictionary.registerOre("ingotGlowstone", ingotGlow);
-
-        //init items
 
     }
 
     public static void recipebook()
     {
-        //ingredients.init();//red_mixture,red_ingot,yell_mixture,yell_ingot);
 	    	/*~~~~~Ingredients for Recipes!~~~~~*/
 
-        // Item Stacks to make Red Mixture
-        // recipe result stack
-        ItemStack redmix_Stack     = new ItemStack(mixRed);
-        ItemStack redingot_Stack   = new ItemStack(ingotRed);
-        ItemStack redstone_Stack   = new ItemStack(Items.redstone, 4);
-        ItemStack redblock_Stack   = new ItemStack(Blocks.redstone_block, 4);
 
-        // recipe shopping list!
-        ItemStack flint_Stack      = new ItemStack(Items.flint);
-        ItemStack ironingot_Stack  = new ItemStack(Items.iron_ingot);
-        ItemStack sand_Stack       = new ItemStack(Blocks.sand);
-        ItemStack reddye_Stack     = new ItemStack(Items.dye, 1 ,1);
-
-        // Item Stacks to make Yellow Mixture
-        // recipe result stack
-        ItemStack glowmix_Stack    = new ItemStack(mixGlow);
-        ItemStack glowingot_Stack  = new ItemStack(ingotGlow);
-        ItemStack glowstone_Stack  = new ItemStack(Items.glowstone_dust, 4);
-        ItemStack glowblock_Stack  = new ItemStack(Blocks.glowstone, 4);
+            ItemStack redMixStack     = new ItemStack(mixRed);
+            ItemStack redIngotStack   = new ItemStack(ingotRed);
+            ItemStack redStoneStack   = new ItemStack(Items.redstone, 4);
+            ItemStack redBlockStack   = new ItemStack(Blocks.redstone_block, 4);
 
 
-        // recipe shopping list!
-        //ItemStack flint_Stack    = new ItemStack(Item.flint);// stack all ready set
-        ItemStack goldingot_Stack  = new ItemStack(Items.gold_ingot);
-        ItemStack soulsand_Stack   = new ItemStack(Blocks.soul_sand);
-        ItemStack yelldye_Stack    = new ItemStack(Items.dye, 1 ,11);
+            ItemStack flintStackA     = new ItemStack(Items.flint);
+            ItemStack ironIngotStack  = new ItemStack(Items.iron_ingot);
+            ItemStack sandStack       = new ItemStack(Blocks.sand);
+            ItemStack redDyeStack     = new ItemStack(Items.dye, 1 ,1);
+
+
+            ItemStack glowMixStack    = new ItemStack(mixGlow);
+            ItemStack glowIngotStack  = new ItemStack(ingotGlow);
+            ItemStack glowStoneStack  = new ItemStack(Items.glowstone_dust, 4);
+            ItemStack glowBlockStack  = new ItemStack(Blocks.glowstone, 4);
+
+            ItemStack flintStackB     = new ItemStack(Items.flint);
+            ItemStack goldIngotStack  = new ItemStack(Items.gold_ingot);
+            ItemStack soulSandStack   = new ItemStack(Blocks.soul_sand);
+            ItemStack yellowDyeStack  = new ItemStack(Items.dye, 1 ,11);
+
+
 
         //clay shopping list
-        ItemStack clayblock_stack   = new ItemStack(Blocks.clay);
-        ItemStack clayglob_stack    = new ItemStack(Items.clay_ball, 4);
+        ItemStack clayBallStack     = new ItemStack(Items.clay_ball, 4);
+        ItemStack clayBlockStack    = new ItemStack(Blocks.clay);
 
-        ItemStack dirtblock_stack   = new ItemStack(Blocks.dirt);
-        ItemStack sandblock_stack   = new ItemStack(Blocks.sand);
-        ItemStack waterbucket_stack = new ItemStack(Items.water_bucket);
+        ItemStack dirtBlockStack    = new ItemStack(Blocks.dirt);
+        ItemStack sandBlockStack    = new ItemStack(Blocks.sand);
+        ItemStack waterBucketStack  = new ItemStack(Items.water_bucket);
 
-	    	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-	        /*~~~~~ Stop Gap Recipe Book ~~~~~*/
 
-	    //Making: red mixture
-        GameRegistry.addShapelessRecipe(redmix_Stack,
-                flint_Stack, ironingot_Stack, sand_Stack, reddye_Stack);
+/* REDSTONE RECIPES */
+        if(SGConfig.canMakeOwnRedstone)
+        {
+	         //Making: red mixture
+            GameRegistry.addShapelessRecipe(redMixStack,
+                    flintStackA, ironIngotStack, sandStack, redDyeStack);
 
-        //Making: red ingot
-        GameRegistry.addSmelting(mixRed,
-                redingot_Stack, 0.2f );
+            //Making: red ingot
+             GameRegistry.addSmelting(mixRed, redIngotStack, 0.2f );
 
-        //Making: Redstone dust
-        GameRegistry.addShapelessRecipe(redstone_Stack,
-                redingot_Stack);
+             //Making: Redstone dust
+            GameRegistry.addShapelessRecipe(redStoneStack,
+                redIngotStack);
 
-        //Making: Redstone Block
-        GameRegistry.addRecipe(redblock_Stack,
+            //Making: Redstone Block
+            GameRegistry.addRecipe(redBlockStack,
                 "xxx",
                 "xxx",
                 "xxx",
-                'x', redingot_Stack);
-
-
+                'x', redIngotStack);
+        }
+/* GLOWSTONE RECIPES */
+        if(SGConfig.canMakeOwnGlowstone)
         //Making: Glow Mixture
-        GameRegistry.addShapelessRecipe(glowmix_Stack,
-                flint_Stack, goldingot_Stack, soulsand_Stack, yelldye_Stack);
+        GameRegistry.addShapelessRecipe(glowMixStack,
+                flintStackB, goldIngotStack, soulSandStack, yellowDyeStack);
 
         //Making: Glow Ingot
         GameRegistry.addSmelting(mixGlow,
-                glowingot_Stack, 0.2f);
+                glowIngotStack, 0.2f);
 
         //Making: Glowstone Dust
-        GameRegistry.addShapelessRecipe(glowstone_Stack,
-                glowingot_Stack);
+        GameRegistry.addShapelessRecipe(glowStoneStack,
+                glowIngotStack);
 
         //Making:Glowstone block
-        GameRegistry.addRecipe(glowblock_Stack,
+        GameRegistry.addRecipe(glowBlockStack,
                 "xx",
                 "xx",
-                'x', glowingot_Stack);
+                'x', glowIngotStack);
 
-        /* CLAY RECIPES */
 
-        //Making: clay block
-        GameRegistry.addRecipe(clayblock_stack,
+/* CLAY RECIPES */
+        if(SGConfig.canCraftClayBlock)
+        {
+            //Making: clay block
+            GameRegistry.addRecipe(clayBlockStack,
                 "xxy",
                 "xzy",
                 "xyy",
-                'x', dirtblock_stack,
-                'y', sandblock_stack,
-                'z', waterbucket_stack);
+                'x', dirtBlockStack,
+                'y', sandBlockStack,
+                'z', waterBucketStack);
+        }
 
-        //Making: clay globs
-        GameRegistry.addShapelessRecipe(clayglob_stack,
-                clayblock_stack);
+        if(SGConfig.canCraftClayBalls)
+        {
+            //Making: clay balls
+            GameRegistry.addShapelessRecipe(clayBallStack,
+                clayBlockStack);
+        }
 
 
 
