@@ -96,6 +96,32 @@ public static Item mixGlow;
         ItemStack sandBlockStack    = new ItemStack(Blocks.sand);
         ItemStack waterBucketStack  = new ItemStack(Items.water_bucket);
 
+        //flint stacks
+        ItemStack flintStackC        = new ItemStack(Items.flint);
+       //ItemStack flintBlockStack   = new ItemStack(flintBlock);
+        ItemStack gravelStack       = new ItemStack(Blocks.gravel);
+
+        //uses waterBucketStack
+
+        //Wool to string
+        ItemStack woolStack         = new ItemStack(Blocks.wool);
+        ItemStack stringStack       = new ItemStack(Items.string, 4);
+
+        ItemStack bowlStack         = new ItemStack(Items.bowl);
+        ItemStack stickStack        = new ItemStack(Items.stick);
+
+        // slab back!
+        ItemStack woodSlabStack     = new ItemStack(Blocks.wooden_slab);
+        ItemStack woodStack         = new ItemStack(Blocks.planks);
+
+        ItemStack cobbleSlabStack    = new ItemStack(Blocks.stone_slab,1, 3);
+        ItemStack cobbleStack        = new ItemStack(Blocks.cobblestone);
+
+        ItemStack stoneSlabStack    = new ItemStack(Blocks.stone_slab,1,0);
+        ItemStack stoneStack        = new ItemStack(Blocks.stone);
+
+
+
 
 
 /* REDSTONE RECIPES */
@@ -159,8 +185,42 @@ public static Item mixGlow;
             GameRegistry.addShapelessRecipe(clayBallStack,
                 clayBlockStack);
         }
+/* FLINT RECIPES */
 
+        //Making: flint from gravel and water
+        GameRegistry.addShapedRecipe(flintStackC,
+                "x","y",
+                'x', gravelStack, 'y', waterBucketStack
+        );
 
+        //MAKING; flint block
+       /* GameRegistry.addRecipe(flintBlock,
+                "xxx",
+                "xxx",
+                "xxx",
+                'x', flintStackC
+        );*/
+/* WOOL AND STRING RECIPES */
 
-    }
+        //Making: wool back to string
+        GameRegistry.addShapedRecipe(stringStack,
+                "x",
+                "y",
+                "z",
+                'x', woolStack,
+                'y', stickStack,
+                'z', bowlStack
+                );
+/* SLAB BACK BITCHES */
+
+        //Making: Block from Slabs; wood
+        GameRegistry.addShapelessRecipe(woodStack,woodSlabStack,woodSlabStack);
+
+        //cobble
+        GameRegistry.addShapelessRecipe(cobbleStack, cobbleSlabStack, cobbleSlabStack);
+
+        //smooth stone
+        GameRegistry.addShapelessRecipe(stoneStack, stoneSlabStack, stoneSlabStack);
+
+    }//recipe book
 }

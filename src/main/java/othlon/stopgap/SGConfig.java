@@ -7,7 +7,6 @@ package othlon.stopgap;
 import java.io.File;
 
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 
 public class SGConfig {
 
@@ -21,12 +20,23 @@ public class SGConfig {
 
     public static boolean canCraftClayBalls;
 
+    public static boolean canPanFlint;
+
+    public static boolean canSpinString;
+
+    public static boolean canUnslabWood;
+
+    public static boolean canUnslabCobble;
+
+    public static boolean canUnslabStone;
+
+
 
     public static void configurating(File confile)
     {
         Configuration config = new Configuration(confile);
 
-        if(config.hasChanged())config.save();
+
 
         config.load();
 
@@ -34,6 +44,8 @@ public class SGConfig {
         canMakeOwnGlowstone = config.get("Do you want to be able to make"," your own glowstone?",true,"").getBoolean(true);
         canCraftClayBlock   = config.get("Do you want to be able to make"," blocks of clay?",true,"").getBoolean(true);
         canCraftClayBalls   = config.get("Do you want to be able to make"," balls of clay from crafting a block of clay?",true,"").getBoolean(true);
+
+        if(config.hasChanged())config.save();
     }
 
 }
