@@ -5,6 +5,7 @@ package othlon.stopgap.items;
  */
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -117,8 +118,8 @@ public static Item mixGlow;
         ItemStack cobbleSlabStack    = new ItemStack(Blocks.stone_slab,1, 3);
         ItemStack cobbleStack        = new ItemStack(Blocks.cobblestone);
 
-        ItemStack stoneSlabStack    = new ItemStack(Blocks.stone_slab,1,0);
-        ItemStack stoneStack        = new ItemStack(Blocks.stone);
+        ItemStack stoneSlabStack         = new ItemStack(Blocks.stone_slab,1,0);
+        ItemStack sandstoneStack        = new ItemStack(Blocks.sandstone, 1,0);
 
 
 
@@ -212,15 +213,50 @@ public static Item mixGlow;
                 'z', bowlStack
                 );
 /* SLAB BACK BITCHES */
+       Block[] results = {Blocks.stone,
+                          Blocks.sandstone,
+                          Blocks.cobblestone,
+                          Blocks.brick_block,
+                          Blocks.stonebrick,
+                          Blocks.nether_brick,
+                          Blocks.quartz_block};
 
-        //Making: Block from Slabs; wood
-        GameRegistry.addShapelessRecipe(woodStack,woodSlabStack,woodSlabStack);
+        int[] meta ={0,1,3,4,5,6,7};
 
-        //cobble
-        GameRegistry.addShapelessRecipe(cobbleStack, cobbleSlabStack, cobbleSlabStack);
+        for ( int i = 0; i < meta.length; i++){
 
-        //smooth stone
-        GameRegistry.addShapelessRecipe(stoneStack, stoneSlabStack, stoneSlabStack);
+            ItemStack slab = new ItemStack(Blocks.stone_slab,1, meta[i]);
 
+
+            if(i==1)
+            { //if sandstone set meta data
+                GameRegistry.addShapelessRecipe(sandstoneStack, slab, slab);
+            }else{ //no meta needed for block
+                GameRegistry.addShapelessRecipe(new ItemStack(results[i]), slab, slab);
+            }
+
+        }//for
+
+
+        //woods
+        /*
+        Block[] results = {Blocks.planks,
+                Blocks.sandstone,
+                Blocks.cobblestone,
+                Blocks.brick_block,
+                Blocks.stonebrick,
+                Blocks.nether_brick,
+                Blocks.quartz_block};
+
+
+        int[] meta ={0,1,3,4,5,6,7};
+
+        for ( int i = 0; i < meta.length; i++){
+            ItemStack slab = new ItemStack(Blocks.stone_slab,1, meta[i]);
+            GameRegistry.addShapelessRecipe(new ItemStack(results[i]), slab, slab);
+
+
+        }
+        */
     }//recipe book
 }
