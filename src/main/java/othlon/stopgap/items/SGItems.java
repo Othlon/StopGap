@@ -13,6 +13,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraft.item.Item;
 
 import othlon.stopgap.SGConfig;
+import othlon.stopgap.blocks.SGFlintBlock;
 
 public class  SGItems {
 
@@ -20,10 +21,14 @@ public static Item ingotRed;
 public static Item mixRed;
 public static Item ingotGlow;
 public static Item mixGlow;
+public static Block blockFlint;
 
 
     public static void init()
     {
+
+        blockFlint = new SGFlintBlock();
+        GameRegistry.registerBlock(blockFlint, "stopgap:BlockFlint");
 
 
 /* REDSTONE */
@@ -71,7 +76,7 @@ public static Item mixGlow;
             ItemStack redBlockStack   = new ItemStack(Blocks.redstone_block, 4);
 
 
-            ItemStack flintStackA     = new ItemStack(Items.flint);
+            ItemStack flintStack      = new ItemStack(Items.flint);
             ItemStack ironIngotStack  = new ItemStack(Items.iron_ingot);
             ItemStack sandStack       = new ItemStack(Blocks.sand);
             ItemStack redDyeStack     = new ItemStack(Items.dye, 1 ,1);
@@ -82,7 +87,7 @@ public static Item mixGlow;
             ItemStack glowStoneStack  = new ItemStack(Items.glowstone_dust, 4);
             ItemStack glowBlockStack  = new ItemStack(Blocks.glowstone, 4);
 
-            ItemStack flintStackB     = new ItemStack(Items.flint);
+           //flint also used here
             ItemStack goldIngotStack  = new ItemStack(Items.gold_ingot);
             ItemStack soulSandStack   = new ItemStack(Blocks.soul_sand);
             ItemStack yellowDyeStack  = new ItemStack(Items.dye, 1 ,11);
@@ -98,8 +103,8 @@ public static Item mixGlow;
         ItemStack waterBucketStack  = new ItemStack(Items.water_bucket);
 
         //flint stacks
-        ItemStack flintStackC        = new ItemStack(Items.flint);
-       //ItemStack flintBlockStack   = new ItemStack(flintBlock);
+        ItemStack flintsStack       = new ItemStack(Items.flint, 9);
+        ItemStack flintBlockStack   = new ItemStack(blockFlint);
         ItemStack gravelStack       = new ItemStack(Blocks.gravel);
 
         //uses waterBucketStack
@@ -120,7 +125,7 @@ public static Item mixGlow;
         {
 	         //Making: red mixture
             GameRegistry.addShapelessRecipe(redMixStack,
-                    flintStackA, ironIngotStack, sandStack, redDyeStack);
+                    flintStack, ironIngotStack, sandStack, redDyeStack);
 
             //Making: red ingot
              GameRegistry.addSmelting(mixRed, redIngotStack, 0.2f );
@@ -140,7 +145,7 @@ public static Item mixGlow;
         if(SGConfig.canMakeOwnGlowstone)
         //Making: Glow Mixture
         GameRegistry.addShapelessRecipe(glowMixStack,
-                flintStackB, goldIngotStack, soulSandStack, yellowDyeStack);
+                flintStack, goldIngotStack, soulSandStack, yellowDyeStack);
 
         //Making: Glow Ingot
         GameRegistry.addSmelting(mixGlow,
@@ -179,18 +184,23 @@ public static Item mixGlow;
 /* FLINT RECIPES */
 
         //Making: flint from gravel and water
-        GameRegistry.addShapedRecipe(flintStackC,
+        GameRegistry.addShapedRecipe(flintStack,
                 "x","y",
                 'x', gravelStack, 'y', waterBucketStack
         );
 
         //MAKING; flint block
-       /* GameRegistry.addRecipe(flintBlock,
+        GameRegistry.addRecipe(flintBlockStack,
                 "xxx",
                 "xxx",
                 "xxx",
-                'x', flintStackC
-        );*/
+                'x', flintStack
+        );
+
+        //making: flint from block
+        GameRegistry.addRecipe(flintsStack, flintBlockStack);
+
+
 /* WOOL AND STRING RECIPES */
 
         //Making: wool back to string
@@ -203,7 +213,7 @@ public static Item mixGlow;
                 'z', bowlStack
                 );
 /* SLAB BACK BITCHES */
-       Block[] results = {Blocks.stone,
+       Block[] stoneResults = {Blocks.stone,
                           Blocks.cobblestone,
                           Blocks.brick_block,
                           Blocks.stonebrick,
@@ -215,9 +225,16 @@ public static Item mixGlow;
         for ( int i = 0; i < meta.length; i++){
 
             ItemStack slab = new ItemStack(Blocks.stone_slab,1, meta[i]);
-            GameRegistry.addShapelessRecipe(new ItemStack(results[i]), slab, slab);
+            ItemStack block = new ItemStack(stoneResults[i]);
+            GameRegistry.addShapelessRecipe(block, slab, slab);
 
         }//for
+        //WOODEN SLAB BACK
+       for( int i = 0; i < 6; i++){
 
+           ItemStack woodSlab = new ItemStack(Blocks.wooden_slab, 1, i);
+           ItemStack woodBlock = new ItemStack(Blocks.planks,1, i);
+           GameRegistry.addShapelessRecipe(woodBlock, woodSlab, woodSlab);
+       }
     }//recipe book
 }
