@@ -1,14 +1,13 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
+  "modid": "StopGap",
+  "name": "StopGap",
+  "description": "When you're caught short: there are stopgap measures",
+  "version": "2.0",
   "mcversion": "${mcversion}",
-  "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["Othlon"],
+  "credits": "TY to Cazzar,JuiceGrape,NTZ for all your help <3",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
