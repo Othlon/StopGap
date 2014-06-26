@@ -28,10 +28,12 @@ public static Block blockFlint;
     {
 
         blockFlint = new SGFlintBlock();
+
+
         GameRegistry.registerBlock(blockFlint, "stopgap:BlockFlint");
 
 
-/* REDSTONE */
+         /* REDSTONE */
          ingotRed = new SGIngot()
                 .setUnlocalizedName("Red Ingot")
                 .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
@@ -63,10 +65,10 @@ public static Block blockFlint;
             OreDictionary.registerOre("ingotGlowstone", ingotGlow);
 
 
-    }
+   }// init
 
-    public static void recipebook()
-    {
+   public static void recipebook()
+   {
 	    	/*~~~~~Ingredients for Recipes!~~~~~*/
 
 
@@ -116,10 +118,6 @@ public static Block blockFlint;
         ItemStack bowlStack         = new ItemStack(Items.bowl);
         ItemStack stickStack        = new ItemStack(Items.stick);
 
-
-
-
-
 /* REDSTONE RECIPES */
         if(SGConfig.canMakeOwnRedstone)
         {
@@ -142,25 +140,25 @@ public static Block blockFlint;
                 'x', redIngotStack);
         }
 /* GLOWSTONE RECIPES */
-        if(SGConfig.canMakeOwnGlowstone)
-        //Making: Glow Mixture
-        GameRegistry.addShapelessRecipe(glowMixStack,
-                flintStack, goldIngotStack, soulSandStack, yellowDyeStack);
+        if(SGConfig.canMakeOwnGlowstone) {
+            //Making: Glow Mixture
+            GameRegistry.addShapelessRecipe(glowMixStack,
+                    flintStack, goldIngotStack, soulSandStack, yellowDyeStack);
 
-        //Making: Glow Ingot
-        GameRegistry.addSmelting(mixGlow,
-                glowIngotStack, 0.2f);
+            //Making: Glow Ingot
+            GameRegistry.addSmelting(mixGlow,
+                    glowIngotStack, 0.2f);
 
-        //Making: Glowstone Dust
-        GameRegistry.addShapelessRecipe(glowStoneStack,
-                glowIngotStack);
+            //Making: Glowstone Dust
+            GameRegistry.addShapelessRecipe(glowStoneStack,
+                    glowIngotStack);
 
-        //Making:Glowstone block
-        GameRegistry.addRecipe(glowBlockStack,
-                "xx",
-                "xx",
-                'x', glowIngotStack);
-
+            //Making:Glowstone block
+            GameRegistry.addRecipe(glowBlockStack,
+                    "xx",
+                    "xx",
+                    'x', glowIngotStack);
+        }
 
 /* CLAY RECIPES */
         if(SGConfig.canCraftClayBlock)
@@ -182,59 +180,69 @@ public static Block blockFlint;
                 clayBlockStack);
         }
 /* FLINT RECIPES */
+        if(SGConfig.canPanFlint) {
+            //Making: flint from gravel and water
+            GameRegistry.addShapedRecipe(flintStack,
+                    "x", "y",
+                    'x', gravelStack, 'y', waterBucketStack
+            );
+        }
 
-        //Making: flint from gravel and water
-        GameRegistry.addShapedRecipe(flintStack,
-                "x","y",
-                'x', gravelStack, 'y', waterBucketStack
-        );
+       if(SGConfig.canCraftFlintBlock) {
+           //MAKING; flint block
+           GameRegistry.addRecipe(flintBlockStack,
+                   "xxx",
+                   "xxx",
+                   "xxx",
+                   'x', flintStack
+           );
 
-        //MAKING; flint block
-        GameRegistry.addRecipe(flintBlockStack,
-                "xxx",
-                "xxx",
-                "xxx",
-                'x', flintStack
-        );
 
         //making: flint from block
-        GameRegistry.addRecipe(flintsStack, flintBlockStack);
-
+        GameRegistry.addShapelessRecipe(flintsStack, flintBlockStack);
+       }
 
 /* WOOL AND STRING RECIPES */
-
-        //Making: wool back to string
-        GameRegistry.addShapedRecipe(stringStack,
-                "x",
-                "y",
-                "z",
-                'x', woolStack,
-                'y', stickStack,
-                'z', bowlStack
-                );
+        if(SGConfig.canSpinString) {
+            //Making: wool back to string
+            GameRegistry.addShapedRecipe(stringStack,
+                    "x",
+                    "y",
+                    "z",
+                    'x', woolStack,
+                    'y', stickStack,
+                    'z', bowlStack
+            );
+        }
 /* SLAB BACK BITCHES */
-       Block[] stoneResults = {Blocks.stone,
-                          Blocks.cobblestone,
-                          Blocks.brick_block,
-                          Blocks.stonebrick,
-                          Blocks.nether_brick,
-                          Blocks.quartz_block};
 
-        int[] meta ={0,3,4,5,6,7};
+       if(SGConfig.canUnslabCobble) {
+           Block[] stoneResults = {Blocks.stone,
+                   Blocks.cobblestone,
+                   Blocks.brick_block,
+                   Blocks.stonebrick,
+                   Blocks.nether_brick,
+                   Blocks.quartz_block};
 
-        for ( int i = 0; i < meta.length; i++){
+           int[] meta = {0, 3, 4, 5, 6, 7};
 
-            ItemStack slab = new ItemStack(Blocks.stone_slab,1, meta[i]);
-            ItemStack block = new ItemStack(stoneResults[i]);
-            GameRegistry.addShapelessRecipe(block, slab, slab);
+           for (int i = 0; i < meta.length; i++) {
 
-        }//for
-        //WOODEN SLAB BACK
-       for( int i = 0; i < 6; i++){
+               ItemStack slab = new ItemStack(Blocks.stone_slab, 1, meta[i]);
+               ItemStack block = new ItemStack(stoneResults[i]);
+               GameRegistry.addShapelessRecipe(block, slab, slab);
 
-           ItemStack woodSlab = new ItemStack(Blocks.wooden_slab, 1, i);
-           ItemStack woodBlock = new ItemStack(Blocks.planks,1, i);
-           GameRegistry.addShapelessRecipe(woodBlock, woodSlab, woodSlab);
+           }//for
        }
-    }//recipe book
-}
+
+        if(SGConfig.canUnslabWood) {
+            //WOODEN SLAB BACK
+            for (int i = 0; i < 6; i++) {
+
+                ItemStack woodSlab = new ItemStack(Blocks.wooden_slab, 1, i);
+                ItemStack woodBlock = new ItemStack(Blocks.planks, 1, i);
+                GameRegistry.addShapelessRecipe(woodBlock, woodSlab, woodSlab);
+            }
+        }
+   }//recipe book
+}//end class

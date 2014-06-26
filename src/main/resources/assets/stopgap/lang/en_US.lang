@@ -2,4 +2,5 @@ item.Red Ingot.name=Red Ingot
 item.Red Mixture.name=Red Mixture
 item.Glow Ingot.name=Glow Ingot
 item.Glow Mixture.name=Glow Mixture
+tile.Flint Block.name=Block of Flint
 itemGroup.StopGap=StopGap
