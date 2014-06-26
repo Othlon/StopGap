@@ -111,16 +111,6 @@ public static Item mixGlow;
         ItemStack bowlStack         = new ItemStack(Items.bowl);
         ItemStack stickStack        = new ItemStack(Items.stick);
 
-        // slab back!
-        //ItemStack woodSlabStack     = new ItemStack(Blocks.wooden_slab);
-        //ItemStack woodStack         = new ItemStack(Blocks.planks);
-
-       // ItemStack cobbleSlabStack    = new ItemStack(Blocks.stone_slab,1, 3);
-       // ItemStack cobbleStack        = new ItemStack(Blocks.cobblestone);
-
-       // ItemStack stoneSlabStack         = new ItemStack(Blocks.stone_slab,1,0);
-        ItemStack sandstoneStack        = new ItemStack(Blocks.sandstone, 1,0);
-
 
 
 
@@ -214,26 +204,18 @@ public static Item mixGlow;
                 );
 /* SLAB BACK BITCHES */
        Block[] results = {Blocks.stone,
-                          Blocks.sandstone,
                           Blocks.cobblestone,
                           Blocks.brick_block,
                           Blocks.stonebrick,
                           Blocks.nether_brick,
                           Blocks.quartz_block};
 
-        int[] meta ={0,1,3,4,5,6,7};
+        int[] meta ={0,3,4,5,6,7};
 
         for ( int i = 0; i < meta.length; i++){
 
             ItemStack slab = new ItemStack(Blocks.stone_slab,1, meta[i]);
-
-
-            if(meta[i] == 1)
-            { //if sandstone set meta data
-                GameRegistry.addShapelessRecipe(sandstoneStack, slab, slab);
-            }else{ //no meta needed for block
-                GameRegistry.addShapelessRecipe(new ItemStack(results[i]), slab, slab);
-            }
+            GameRegistry.addShapelessRecipe(new ItemStack(results[i]), slab, slab);
 
         }//for
 
