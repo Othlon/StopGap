@@ -44,22 +44,22 @@ public class SGConfig {
         canMakeOwnRedstone  = config.get("Do you want to be able to make: ",
                                          "DIY redstone",true,"").getBoolean(true);
 
-        canMakeOwnGlowstone = config.get("Do you want to be able to make",
+        canMakeOwnGlowstone = config.get("Do you want to be able to make: ",
                                          "DIY glowstone",true,"").getBoolean(true);
 
-        canCraftClayBlock   = config.get("Do you want to be able to make",
+        canCraftClayBlock   = config.get("Do you want to be able to make: ",
                                          "craft clay block ",true,"").getBoolean(true);
 
-        canCraftClayBalls   = config.get("Do you want to be able to make",
+        canCraftClayBalls   = config.get("Do you want to be able to make: ",
                                          "clay block to clay balls ",true,"").getBoolean(true);
 
-        canPanFlint         = config.get("Do you want to be able to make",
+        canPanFlint         = config.get("Do you want to be able to make: ",
                                          "flint = water bucket + gravel",true,"").getBoolean(true);
 
-        canCraftFlintBlock  = config.get("Do you want to be able to make",
+        canCraftFlintBlock  = config.get("Do you want to be able to make: ",
                                          "Flint Block",true,"").getBoolean(true);
 
-        canSpinString       = config.get("Do you want to be able to make",
+        canSpinString       = config.get("Do you want to be able to make: ",
                                          "string = wool/stick/bowl ",true,"").getBoolean(true);
 
         canUnslabWood       = config.get("SLAB BACK!",
