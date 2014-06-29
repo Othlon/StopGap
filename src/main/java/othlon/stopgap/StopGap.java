@@ -29,8 +29,8 @@ public class StopGap {
     public static void preInit( FMLPreInitializationEvent event)
     {
 
-       SGConfig.configurating(event.getSuggestedConfigurationFile());
-
+        SGConfig.configurating(event.getSuggestedConfigurationFile());
+        othlon.stopgap.backslab.vanilla.SGBSVanilla.okgo(SGConfig.canUnslabCobble, SGConfig.canUnslabWood);
         othlon.stopgap.items.SGItems.init();
         othlon.stopgap.items.SGItems.recipebook();
 

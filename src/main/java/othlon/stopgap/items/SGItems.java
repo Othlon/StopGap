@@ -214,7 +214,7 @@ public static Block blockFlint;
                     'z', bowlStack
             );
         }
-/* SLAB BACK BITCHES */
+/* SLAB BACK BITCHES
 
        if(SGConfig.canUnslabCobble) {
            Block[] stoneResults = {Blocks.stone,
@@ -243,6 +243,6 @@ public static Block blockFlint;
                 ItemStack woodBlock = new ItemStack(Blocks.planks, 1, i);
                 GameRegistry.addShapelessRecipe(woodBlock, woodSlab, woodSlab);
             }
-        }
+        } */
    }//recipe book
 }//end class
