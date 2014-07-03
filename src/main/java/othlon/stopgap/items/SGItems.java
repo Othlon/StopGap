@@ -34,37 +34,40 @@ public static Block blockFlint;
 
 
          /* REDSTONE */
-         ingotRed = new SGIngot()
-                .setUnlocalizedName("Red Ingot")
-                .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                .setTextureName("stopgap:red_ingot");
+        if(SGConfig.canMakeOwnRedstone) {
+            ingotRed = new SGIngot()
+                    .setUnlocalizedName("Red Ingot")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:red_ingot");
 
-         GameRegistry.registerItem(ingotRed, "stopgap:ingotRed");
+            GameRegistry.registerItem(ingotRed, "stopgap:ingotRed");
 
-         mixRed   = new SGMixture()
-                .setUnlocalizedName("Red Mixture")
-                .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                .setTextureName("stopgap:red_mix");
-         GameRegistry.registerItem(mixRed, "mixRed");
+            mixRed = new SGMixture()
+                    .setUnlocalizedName("Red Mixture")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:red_mix");
+            GameRegistry.registerItem(mixRed, "mixRed");
 
-         OreDictionary.registerOre("ingotRedstone", ingotRed);
+            OreDictionary.registerOre("ingotRedstone", ingotRed);
+        }
 
 /* GLOWSTONE */
+        if(SGConfig.canMakeOwnGlowstone) {
             ingotGlow = new SGIngot()
-                 .setUnlocalizedName("Glow Ingot")
-                 .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                 .setTextureName("stopgap:glow_ingot");
+                    .setUnlocalizedName("Glow Ingot")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:glow_ingot");
             GameRegistry.registerItem(ingotGlow, "ingotGlow");
 
-            mixGlow   = new SGMixture()
-                .setUnlocalizedName("Glow Mixture")
-                .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                .setTextureName("stopgap:glow_mix");
+            mixGlow = new SGMixture()
+                    .setUnlocalizedName("Glow Mixture")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:glow_mix");
             GameRegistry.registerItem(mixGlow, "mixGlow");
 
             OreDictionary.registerOre("ingotGlowstone", ingotGlow);
 
-
+        }
    }// init
 
    public static void recipebook()
@@ -72,8 +75,9 @@ public static Block blockFlint;
 	    	/*~~~~~Ingredients for Recipes!~~~~~*/
 
 
-            ItemStack redMixStack     = new ItemStack(mixRed);
-            ItemStack redIngotStack   = new ItemStack(ingotRed);
+            ItemStack redMixStack    = new ItemStack(mixRed);
+            ItemStack redIngotStack  = new ItemStack(ingotRed);
+
             ItemStack redStoneStack   = new ItemStack(Items.redstone, 4);
             ItemStack redBlockStack   = new ItemStack(Blocks.redstone_block, 4);
 
