@@ -22,7 +22,7 @@ public class SGConfig {
 
     public static boolean canPanFlint;
 
-    public static boolean canCraftFlintBlock;
+    public static boolean canCraftFlintBlock = true;
 
     public static boolean canSpinString;
 
@@ -56,8 +56,8 @@ public class SGConfig {
         canPanFlint         = config.get("Do you want to be able to make: ",
                                          "flint = water bucket + gravel",true,"").getBoolean(true);
 
-        canCraftFlintBlock  = config.get("Do you want to be able to make: ",
-                                         "Flint Block",true,"").getBoolean(true);
+       //  canCraftFlintBlock  = config.get("Do you want to be able to make: ",
+                                         //"Flint Block",true,"").getBoolean(true);
 
         canSpinString       = config.get("Do you want to be able to make: ",
                                          "string = wool/stick/bowl ",true,"").getBoolean(true);

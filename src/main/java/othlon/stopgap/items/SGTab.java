@@ -17,6 +17,6 @@ public class SGTab extends CreativeTabs{
     @Override
     public Item getTabIconItem()
     {
-        return SGItems.mixRed;
+        return Item.getItemFromBlock(SGItems.blockFlint);
     }
 }
