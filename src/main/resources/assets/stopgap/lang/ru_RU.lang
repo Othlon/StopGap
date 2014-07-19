@@ -1,0 +1,6 @@
+item.Red Ingot.name=Красный Слиток
+item.Red Mixture.name=Красная Смесь
+item.Glow Ingot.name=Блестящий Слиток
+item.Glow Mixture.name=Блестящая Смесь
+tile.Flint Block.name=Блок Кремня
+itemGroup.StopGap=StopGap
