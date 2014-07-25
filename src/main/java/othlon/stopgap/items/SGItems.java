@@ -103,6 +103,7 @@ public static Block blockFlint;
         //clay shopping list
         ItemStack clayBallStack     = new ItemStack(Items.clay_ball, 4);
         ItemStack clayBlockStack    = new ItemStack(Blocks.clay);
+        ItemStack clayBlocksStack    = new ItemStack(Blocks.clay, 4);
 
         ItemStack dirtBlockStack    = new ItemStack(Blocks.dirt);
         ItemStack sandBlockStack    = new ItemStack(Blocks.sand);
@@ -168,13 +169,21 @@ public static Block blockFlint;
         if(SGConfig.canCraftClayBlock)
         {
             //Making: clay block
-            GameRegistry.addRecipe(clayBlockStack,
+            GameRegistry.addRecipe(clayBlocksStack,
                 "xxy",
                 "xzy",
                 "xyy",
                 'x', dirtBlockStack,
                 'y', sandBlockStack,
                 'z', waterBucketStack);
+
+            GameRegistry.addRecipe(clayBlocksStack,
+                    "xxy",
+                    "xzy",
+                    "xyy",
+                    'x', sandBlockStack ,
+                    'y', dirtBlockStack,
+                    'z', waterBucketStack);
         }
 
         if(SGConfig.canCraftClayBalls)
