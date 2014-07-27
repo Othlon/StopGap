@@ -4,9 +4,9 @@ package othlon.stopgap;
  * Created by Jen on 20/05/14.
  */
 
-import java.io.File;
-
 import net.minecraftforge.common.config.Configuration;
+
+import java.io.File;
 
 public class SGConfig {
 
@@ -22,13 +22,15 @@ public class SGConfig {
 
     public static boolean canPanFlint;
 
-    public static boolean canCraftFlintBlock;
+    public static boolean canCraftFlintBlock = true;
 
     public static boolean canSpinString;
 
     public static boolean canUnslabWood;
 
     public static boolean canUnslabCobble;
+
+    public static boolean canSticksSromSaplings;
 
 
 
@@ -56,8 +58,8 @@ public class SGConfig {
         canPanFlint         = config.get("Do you want to be able to make: ",
                                          "flint = water bucket + gravel",true,"").getBoolean(true);
 
-        canCraftFlintBlock  = config.get("Do you want to be able to make: ",
-                                         "Flint Block",true,"").getBoolean(true);
+       //  canCraftFlintBlock  = config.get("Do you want to be able to make: ",
+                                         //"Flint Block",true,"").getBoolean(true);
 
         canSpinString       = config.get("Do you want to be able to make: ",
                                          "string = wool/stick/bowl ",true,"").getBoolean(true);
@@ -67,6 +69,8 @@ public class SGConfig {
 
         canUnslabCobble     = config.get("SLAB BACK!",
                                          "Stone/Bricks: 2 slabs = orginal block ",true,"").getBoolean(true);
+        canSticksSromSaplings     = config.get("Sticks From Saplings",
+                "crafted sapling = 1 stick",true,"").getBoolean(true);
 
         if(config.hasChanged())config.save();
     }

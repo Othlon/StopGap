@@ -17,10 +17,10 @@ import othlon.stopgap.blocks.SGFlintBlock;
 
 public class  SGItems {
 
-public static Item ingotRed;
-public static Item mixRed;
-public static Item ingotGlow;
-public static Item mixGlow;
+public static Item  ingotRed;
+public static Item  mixRed;
+public static Item  ingotGlow;
+public static Item  mixGlow;
 public static Block blockFlint;
 
 
@@ -34,37 +34,40 @@ public static Block blockFlint;
 
 
          /* REDSTONE */
-         ingotRed = new SGIngot()
-                .setUnlocalizedName("Red Ingot")
-                .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                .setTextureName("stopgap:red_ingot");
+        if(SGConfig.canMakeOwnRedstone) {
+            ingotRed = new SGIngot()
+                    .setUnlocalizedName("Red Ingot")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:red_ingot");
 
-         GameRegistry.registerItem(ingotRed, "stopgap:ingotRed");
+            GameRegistry.registerItem(ingotRed, "stopgap:ingotRed");
 
-         mixRed   = new SGMixture()
-                .setUnlocalizedName("Red Mixture")
-                .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                .setTextureName("stopgap:red_mix");
-         GameRegistry.registerItem(mixRed, "mixRed");
+            mixRed = new SGMixture()
+                    .setUnlocalizedName("Red Mixture")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:red_mix");
+            GameRegistry.registerItem(mixRed, "mixRed");
 
-         OreDictionary.registerOre("ingotRedstone", ingotRed);
+            OreDictionary.registerOre("ingotRedstone", ingotRed);
+        }
 
 /* GLOWSTONE */
+        if(SGConfig.canMakeOwnGlowstone) {
             ingotGlow = new SGIngot()
-                 .setUnlocalizedName("Glow Ingot")
-                 .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                 .setTextureName("stopgap:glow_ingot");
+                    .setUnlocalizedName("Glow Ingot")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:glow_ingot");
             GameRegistry.registerItem(ingotGlow, "ingotGlow");
 
-            mixGlow   = new SGMixture()
-                .setUnlocalizedName("Glow Mixture")
-                .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
-                .setTextureName("stopgap:glow_mix");
+            mixGlow = new SGMixture()
+                    .setUnlocalizedName("Glow Mixture")
+                    .setCreativeTab(othlon.stopgap.StopGap.getCreativeTab())
+                    .setTextureName("stopgap:glow_mix");
             GameRegistry.registerItem(mixGlow, "mixGlow");
 
             OreDictionary.registerOre("ingotGlowstone", ingotGlow);
 
-
+        }
    }// init
 
    public static void recipebook()
@@ -72,8 +75,9 @@ public static Block blockFlint;
 	    	/*~~~~~Ingredients for Recipes!~~~~~*/
 
 
-            ItemStack redMixStack     = new ItemStack(mixRed);
-            ItemStack redIngotStack   = new ItemStack(ingotRed);
+            ItemStack redMixStack    = new ItemStack(mixRed);
+            ItemStack redIngotStack  = new ItemStack(ingotRed);
+
             ItemStack redStoneStack   = new ItemStack(Items.redstone, 4);
             ItemStack redBlockStack   = new ItemStack(Blocks.redstone_block, 4);
 
@@ -99,6 +103,7 @@ public static Block blockFlint;
         //clay shopping list
         ItemStack clayBallStack     = new ItemStack(Items.clay_ball, 4);
         ItemStack clayBlockStack    = new ItemStack(Blocks.clay);
+        ItemStack clayBlocksStack    = new ItemStack(Blocks.clay, 4);
 
         ItemStack dirtBlockStack    = new ItemStack(Blocks.dirt);
         ItemStack sandBlockStack    = new ItemStack(Blocks.sand);
@@ -118,6 +123,7 @@ public static Block blockFlint;
         ItemStack bowlStack         = new ItemStack(Items.bowl);
         ItemStack stickStack        = new ItemStack(Items.stick);
 
+       ItemStack saplingStack       = new ItemStack(Blocks.sapling);
 /* REDSTONE RECIPES */
         if(SGConfig.canMakeOwnRedstone)
         {
@@ -164,13 +170,21 @@ public static Block blockFlint;
         if(SGConfig.canCraftClayBlock)
         {
             //Making: clay block
-            GameRegistry.addRecipe(clayBlockStack,
+            GameRegistry.addRecipe(clayBlocksStack,
                 "xxy",
                 "xzy",
                 "xyy",
                 'x', dirtBlockStack,
                 'y', sandBlockStack,
                 'z', waterBucketStack);
+
+            GameRegistry.addRecipe(clayBlocksStack,
+                    "xxy",
+                    "xzy",
+                    "xyy",
+                    'x', sandBlockStack ,
+                    'y', dirtBlockStack,
+                    'z', waterBucketStack);
         }
 
         if(SGConfig.canCraftClayBalls)
@@ -214,35 +228,14 @@ public static Block blockFlint;
                     'z', bowlStack
             );
         }
-/* SLAB BACK BITCHES
+//SAPLING STICKS
 
-       if(SGConfig.canUnslabCobble) {
-           Block[] stoneResults = {Blocks.stone,
-                   Blocks.cobblestone,
-                   Blocks.brick_block,
-                   Blocks.stonebrick,
-                   Blocks.nether_brick,
-                   Blocks.quartz_block};
+       if(SGConfig.canSticksSromSaplings) {
 
-           int[] meta = {0, 3, 4, 5, 6, 7};
+               GameRegistry.addShapelessRecipe(stickStack, saplingStack);
 
-           for (int i = 0; i < meta.length; i++) {
-
-               ItemStack slab = new ItemStack(Blocks.stone_slab, 1, meta[i]);
-               ItemStack block = new ItemStack(stoneResults[i]);
-               GameRegistry.addShapelessRecipe(block, slab, slab);
-
-           }//for
        }
 
-        if(SGConfig.canUnslabWood) {
-            //WOODEN SLAB BACK
-            for (int i = 0; i < 6; i++) {
-
-                ItemStack woodSlab = new ItemStack(Blocks.wooden_slab, 1, i);
-                ItemStack woodBlock = new ItemStack(Blocks.planks, 1, i);
-                GameRegistry.addShapelessRecipe(woodBlock, woodSlab, woodSlab);
-            }
-        } */
+//NETHER WART?
    }//recipe book
 }//end class
