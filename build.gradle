@@ -18,11 +18,11 @@ buildscript {
 apply plugin: 'forge'
 
 version = "2.0.4"
-group= "othlon.StopGap" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group= "othlon.stopgap" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "StopGap"
 
 minecraft {
-    version = "1.7.2-10.12.1.1082"
+    version = "1.7.10-10.13.0.1188"
     assetDir = "eclipse/assets"
 }
 
