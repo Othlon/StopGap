@@ -1,8 +1,5 @@
 package othlon.stopgap;
 
-/**
- * Created by Jen on 18/05/14.
- */
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.Mod;
 import net.minecraft.creativetab.CreativeTabs;
@@ -15,7 +12,7 @@ public class StopGap {
 
     public static final String MODID   = "StopGap";
     public static final String MODNAME = "StopGap";
-    public static final String VERSION = "2.0.3";
+    public static final String VERSION = "2.0.5";
 
     private static CreativeTabs stopGapTab = new SGTab(CreativeTabs.getNextID(),MODID );
 

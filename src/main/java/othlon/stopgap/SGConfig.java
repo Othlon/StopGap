@@ -1,8 +1,6 @@
 package othlon.stopgap;
 
-/**
- * Created by Jen on 20/05/14.
- */
+
 
 import net.minecraftforge.common.config.Configuration;
 

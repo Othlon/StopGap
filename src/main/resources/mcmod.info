@@ -3,7 +3,7 @@
   "modid": "StopGap",
   "name": "StopGap",
   "description": "When you're caught short: there are stopgap measures",
-  "version": "2.0.1",
+  "version": "2.0.5",
   "mcversion": "${mcversion}",
   "updateUrl": "",
   "authorList": ["Othlon"],

@@ -1,8 +1,5 @@
 package othlon.stopgap.items;
 
-/**
- * Created by Jen on 18/05/14.
- */
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -12,6 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraft.item.Item;
 
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import othlon.stopgap.SGConfig;
 import othlon.stopgap.blocks.SGFlintBlock;
 
@@ -117,13 +116,13 @@ public static Block blockFlint;
         //uses waterBucketStack
 
         //Wool to string
-        ItemStack woolStack         = new ItemStack(Blocks.wool);
+        ItemStack woolStack         = new ItemStack(Blocks.wool, 1, OreDictionary.WILDCARD_VALUE);
         ItemStack stringStack       = new ItemStack(Items.string, 4);
 
         ItemStack bowlStack         = new ItemStack(Items.bowl);
         ItemStack stickStack        = new ItemStack(Items.stick);
 
-       ItemStack saplingStack       = new ItemStack(Blocks.sapling);
+
 /* REDSTONE RECIPES */
         if(SGConfig.canMakeOwnRedstone)
         {
@@ -135,15 +134,16 @@ public static Block blockFlint;
              GameRegistry.addSmelting(mixRed, redIngotStack, 0.2f );
 
              //Making: Redstone dust
-            GameRegistry.addShapelessRecipe(redStoneStack,
-                redIngotStack);
+            GameRegistry.addRecipe(
+                    new ShapelessOreRecipe(redStoneStack, "ingotRedstone"));
 
             //Making: Redstone Block
-            GameRegistry.addRecipe(redBlockStack,
+            GameRegistry.addRecipe(
+                    new ShapedOreRecipe(redBlockStack,
                 "xxx",
                 "xxx",
                 "xxx",
-                'x', redIngotStack);
+                'x', "ingotRedstone"));
         }
 /* GLOWSTONE RECIPES */
         if(SGConfig.canMakeOwnGlowstone) {
@@ -182,7 +182,7 @@ public static Block blockFlint;
                     "xxy",
                     "xzy",
                     "xyy",
-                    'x', sandBlockStack ,
+                    'x', sandBlockStack,
                     'y', dirtBlockStack,
                     'z', waterBucketStack);
         }
@@ -219,20 +219,20 @@ public static Block blockFlint;
 /* WOOL AND STRING RECIPES */
         if(SGConfig.canSpinString) {
             //Making: wool back to string
-            GameRegistry.addShapedRecipe(stringStack,
+            GameRegistry.addRecipe(new ShapedOreRecipe(stringStack,
                     "x",
                     "y",
                     "z",
                     'x', woolStack,
-                    'y', stickStack,
+                    'y', "stickWood",
                     'z', bowlStack
-            );
+            ));
         }
 //SAPLING STICKS
 
        if(SGConfig.canSticksSromSaplings) {
 
-               GameRegistry.addShapelessRecipe(stickStack, saplingStack);
+               GameRegistry.addRecipe(new ShapelessOreRecipe(stickStack, "treeSapling"));
 
        }
 

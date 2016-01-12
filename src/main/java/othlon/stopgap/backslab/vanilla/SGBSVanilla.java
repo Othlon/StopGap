@@ -6,9 +6,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 
 
-/**
- * Created by Jen on 30/06/2014.
- */
 public class SGBSVanilla {
 
 
